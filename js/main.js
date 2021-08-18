@@ -9,10 +9,9 @@ import showResults from './results.js';
 import clear from './clear.js';
 
 function run() {
-    const times = 10;
+    const times = 20;
     let p = Promise.resolve().then(clear); // needed to chain measurements
-    p.then(appendChild);
-    return;
+  
     for (let i = 0; i < times; i++) {
         p = p.then(appendChild).then(clear);
     }

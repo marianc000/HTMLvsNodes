@@ -18,20 +18,19 @@ const data = generateData();
 export const results = {};
 
 function addResult(label, start, domDone, rendered) {
-    if (!results[label])
-        results[label] = [];
+    results[label] = results[label] ?? [];
     results[label].push({ start, domDone, rendered });
 }
 
-export function execute(label, toExecute) {
+export function execute(label, render) {
     return new Promise(resolve => {
         requestAnimationFrame(() => {
             const start = Date.now();
-            toExecute(data);
+            render(data);
             const domDone = Date.now();
             setTimeout(() => {
                 addResult(label, start, domDone, Date.now());
-                setTimeout(resolve, 50);
+                setTimeout(resolve);
             });
         });
     });

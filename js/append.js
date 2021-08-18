@@ -1,4 +1,3 @@
-//  append.js
 import { execute, root } from './shared.js';
 
 function row(vals) {
